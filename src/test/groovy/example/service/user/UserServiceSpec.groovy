@@ -68,7 +68,7 @@ class UserServiceSpec extends Specification {
         def birthDate = new BirthDate()
         def phoneNumber = new PhoneNumber()
         user.id = id
-        name.value = "Hoge Fuga"
+        name.text = "Hoge Fuga"
         user.name = name
         birthDate.year = 1989
         birthDate.month = 11
