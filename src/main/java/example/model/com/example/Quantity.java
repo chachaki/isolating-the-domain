@@ -12,8 +12,14 @@ public class Quantity {
         this.number = number;
     }
 
+    //事前条件として計算可能な値であること
+    public Quantity multiply(Quantity quantity) {
+        return new Quantity(this.number.multiply(quantity.number));
+    }
 
-
+    public TotalAmount totalAmount(UnitPrice price) {
+        return new TotalAmount(number.multiply(price.number));
+    }
 
     //For Spring MVC Binding
     private String text = "";
@@ -50,5 +56,18 @@ public class Quantity {
     @Override
     public int hashCode() {
         return number.hashCode();
+    }
+
+    public static Quantity ofNone() {
+        return new Quantity();
+    }
+
+    public boolean isNone() {
+        //Quantityなら0が未設定という判定はできる
+        return this.number.equals(BigDecimal.ZERO);
+    }
+
+    BigDecimal value() {
+        return number;
     }
 }
